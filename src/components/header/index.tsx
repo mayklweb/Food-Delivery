@@ -1,4 +1,4 @@
-import { Search, ShoppingCart } from "lucide-react";
+import { Search, ShoppingBag } from "lucide-react";
 
 export default function Header() {
   return (
@@ -7,24 +7,17 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="/" className="flex-shrink-0">
-            <span className="text-2xl font-bold text-[#E31837]">LOGO</span>
+            <span className="text-2xl font-bold text-[#FC014A] hover:text-[#fc0148da] transition-all">LOGO</span>
           </a>
 
           {/* Search and Cart */}
           <div className="flex gap-2">
-            <form className="flex border-[1px] border-solid border-gray-500 rounded-full overflow-hidden focus-within:border-primary ">
-              <input className="py-1 px-4 border-none outline-none flex flex-auto" placeholder="Search anything..." type="text" />
-              <button className="w-10 flex items-center justify-center">
-                <Search />
-              </button>
-            </form>
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 bg-[#E31837] text-white rounded-full hover:bg-red-700">
+              <button className="flex items-center gap-2 px-4 py-2 bg-[#FC014A] text-white rounded-full hover:bg-[#fc0148da] transition-all">
                 <span>Корзина</span>
-                <ShoppingCart />
+                <ShoppingBag />
               </button>
             </div>
-
           </div>
         </div>
       </div>
