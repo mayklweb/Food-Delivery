@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { ProductsType } from '../types'
-
+import toast from 'react-hot-toast'
 
 interface CartItem extends ProductsType {
   qty: number
@@ -11,10 +11,10 @@ interface CartState {
   addToCart: (product: ProductsType) => void
   removeFromCart: (productId: number) => void
   clearCart: () => void
+  inc: (productId: number) => void
+  dec: (productId: number) => void
   getTotalItems: () => number
   getTotalPrice: () => number
-  // inc: (id: number) => void
-  // dec: (id: number) => void
 }
 
 const useCartStore = create<CartState>((set, get) => ({
@@ -22,28 +22,18 @@ const useCartStore = create<CartState>((set, get) => ({
 
   addToCart: (product) =>
     set((state) => {
-      const checkCart = state.cart.find((item) => item.id === product.id)
-      if (checkCart) {
+      const existingItem = state.cart.find((item) => item.id === product.id)
+      if (existingItem) {
         return {
           cart: state.cart.map((item) =>
             item.id === product.id ? { ...item, qty: item.qty + 1 } : item
           ),
+
         }
       }
       return { cart: [...state.cart, { ...product, qty: 1 }] }
+
     }),
-
-  // inc: (id) =>
-  //   set((state) => {
-  //     const finedItem = state.cart.find((item) => item.id === id)
-  //     return { cart: [...state.cart, { ...finedItem, qty: + 1 }] }
-  //   }),
-
-  // dec: (id) =>
-  //   set((state) => {
-  //     const finedItem = state.cart.find((item) => item.id === id)
-  //     return { cart: [...state.cart, { ...finedItem, qty: - 1 }] }
-  //   }),
 
   removeFromCart: (productId) =>
     set((state) => ({
@@ -51,6 +41,18 @@ const useCartStore = create<CartState>((set, get) => ({
     })),
 
   clearCart: () => set({ cart: [] }),
+
+  inc: (productId) =>
+    set((state) => ({
+      cart: state.cart.map((item) =>
+        item.id === productId ? { ...item, qty: item.qty + 1 } : item
+      ),
+    })),
+
+  dec: (productId) =>
+    set((state) => ({
+      cart: state.cart.map((item) => item.id === productId && item.qty >= 1 ? { ...item, qty: item.qty - 1 } : item).filter((item) => item.qty < 1 ? item.id !== productId : item),
+    })),
 
   getTotalItems: () => {
     const { cart } = get()

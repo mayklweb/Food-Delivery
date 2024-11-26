@@ -11,7 +11,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Layout />
       <Toaster
-        position="top-center"
+        position="top-right"
         reverseOrder={false}
       />
       <ReactQueryDevtools initialIsOpen={false} />
