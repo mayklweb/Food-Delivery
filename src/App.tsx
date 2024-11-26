@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Layout from './Layout';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from "react-hot-toast";
+import { Layout } from "./Layout";
 
 const queryClient = new QueryClient();
 

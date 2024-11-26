@@ -8,13 +8,13 @@ interface CartItem extends ProductsType {
 
 interface CartState {
   cart: CartItem[]
-  addToCart: (product: CartItem) => void
+  addToCart: (product: ProductsType) => void
   removeFromCart: (productId: number) => void
   clearCart: () => void
   getTotalItems: () => number
   getTotalPrice: () => number
-  inc: (id: number) => void
-  dec: (id: number) => void
+  // inc: (id: number) => void
+  // dec: (id: number) => void
 }
 
 const useCartStore = create<CartState>((set, get) => ({
@@ -33,17 +33,17 @@ const useCartStore = create<CartState>((set, get) => ({
       return { cart: [...state.cart, { ...product, qty: 1 }] }
     }),
 
-  inc: (id) =>
-    set((state) => {
-      const finedItem = state.cart.find((item) => item.id === id)
-      return { cart: [...state.cart, { ...finedItem, qty: + 1 }] }
-    }),
+  // inc: (id) =>
+  //   set((state) => {
+  //     const finedItem = state.cart.find((item) => item.id === id)
+  //     return { cart: [...state.cart, { ...finedItem, qty: + 1 }] }
+  //   }),
 
-  dec: (id) =>
-    set((state) => {
-      const finedItem = state.cart.find((item) => item.id === id)
-      return { cart: [...state.cart, { ...finedItem, qty: - 1 }] }
-    }),
+  // dec: (id) =>
+  //   set((state) => {
+  //     const finedItem = state.cart.find((item) => item.id === id)
+  //     return { cart: [...state.cart, { ...finedItem, qty: - 1 }] }
+  //   }),
 
   removeFromCart: (productId) =>
     set((state) => ({

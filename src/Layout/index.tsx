@@ -1,15 +1,13 @@
 import React from 'react'
-import { Header, ProductsList } from '../components'
 import Filter from '../components/filter'
+import { Header, ProductsList } from '../components'
 
-function Layout() {
+export const Layout: React.FC = () => {
   return (
     <>
-      <Header/>
-      <Filter/>
-      <ProductsList/>
+      <Header />
+      <Filter />
+      <ProductsList />
     </>
   )
 }
-
-export default Layout

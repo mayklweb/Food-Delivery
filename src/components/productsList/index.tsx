@@ -1,11 +1,13 @@
-import ProductsCard from '../productCard'
+import React from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getProducts, } from '../../api/apiServices'
-import Loading from '../loading'
 import toast from 'react-hot-toast'
+import { getProducts } from '../../api/apiServices'
 import { ProductsType } from '../../types'
+import { ProductCard } from '../productCard'
+import { Loading } from '../loading'
 
-function ProductsList() {
+
+export const ProductsList: React.FC = () => {
   const { data: products, isError, error, isLoading } = useQuery<ProductsType[], Error>({
     queryKey: ['products'],
     queryFn: getProducts,
@@ -13,27 +15,23 @@ function ProductsList() {
 
   if (isLoading) return <Loading />
 
-  if (error && isError) {
-    toast.error(error.message)
+  if (isError) {
+    toast.error(error?.message || 'An error occurred while fetching products')
     return null
   }
 
   return (
-    <section>
-      <div className='container mx-auto px-4'>
-        <div>
-          <h3 className='text-2xl font-semibold'>Все: {products?.length} productov</h3>
-        </div>
-        <div className='mt-4 grid grid-cols-4 gap-y-4'>
-          {
-            products?.map((product, i) => (
-              <ProductsCard key={i} product={product} />
-            ))
-          }
+    <section className="py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-semibold mb-6">
+          All Products: <span className="font-normal">{products?.length || 0}</span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products?.map((product, i) => (
+            <ProductCard key={i} product={product} />
+          ))}
         </div>
       </div>
     </section>
   )
 }
-
-export default ProductsList

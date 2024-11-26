@@ -1,18 +1,16 @@
-import { useEffect } from 'react';
+import React from 'react';
 import useCartStore from '../../store';
 import { ProductsType } from '../../types';
 
-interface ProductsCardProps {
-  product: ProductsType;
-}
 
-function ProductsCard({ product }: ProductsCardProps) {
-
+export const ProductCard: React.FC<{ product: ProductsType }> = ({ product }) => {
   const { addToCart } = useCartStore()
-  
+
+  console.log(product);
+
 
   return (
-    <div className="p-4 w-[280px] rounded-lg overflow-hidden bg-white shadow-lg">
+    <div className="p-4 w-[100%] rounded-lg overflow-hidden bg-white shadow-lg">
       <div className="">
         <img
           alt="Les Ailes chicken wings"
@@ -31,10 +29,8 @@ function ProductsCard({ product }: ProductsCardProps) {
         <p className="text-2xl font-bold text-[#FC014A]">
           {product.price} <span className="text-lg">сум</span>
         </p>
-        <button onClick={() =>addToCart(product)} className='w-full h-10 mt-2 rounded text-lg text-white bg-[#FC014A] hover:bg-[#fc0148da] transition-all'>Add to cart</button>
+        <button onClick={() => addToCart(product)} className='w-full h-10 mt-2 rounded text-lg text-white bg-[#FC014A] hover:bg-[#fc0148da] transition-all'>Add to cart</button>
       </div>
     </div>
   )
 }
-
-export default ProductsCard

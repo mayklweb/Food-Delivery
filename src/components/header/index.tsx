@@ -1,6 +1,7 @@
-import { Search, ShoppingBag } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
+import React from "react";
 
-export default function Header() {
+export const Header: React.FC = () => {
   return (
     <nav className="w-full border-b border-gray-200">
       <div className="container mx-auto px-4">
@@ -13,7 +14,7 @@ export default function Header() {
           {/* Search and Cart */}
           <div className="flex gap-2">
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 bg-[#FC014A] text-white rounded-full hover:bg-[#fc0148da] transition-all">
+              <button className="flex items-center gap-2 px-4 py-2 bg-[#FC014A] text-white rounded-lg hover:bg-[#fc0148da] transition-all">
                 <span>Корзина</span>
                 <ShoppingBag />
               </button>
