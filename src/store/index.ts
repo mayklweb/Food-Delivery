@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { ProductsType } from '../types'
-import toast from 'react-hot-toast'
 
 interface CartItem extends ProductsType {
   qty: number
