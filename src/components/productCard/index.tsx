@@ -73,7 +73,7 @@ export const ProductCard: React.FC<{ product: ProductsType }> = ({ product }) =>
         </p>
         {
 
-          !foundedItem ? <button onClick={() => addCart(product)} className='w-full mt-2 p-1 md:py-[6px] rounded text-base text-white bg-[#FC014A] hover:bg-[#fc0148da] transition-all'>Add to cart</button>
+          !foundedItem ? <button onClick={() => addCart(product)} className='w-full mt-2 p-1 md:p-[6px] rounded text-base md:text-lg text-white bg-[#FC014A] hover:bg-[#fc0148da] transition-all'>Add to cart</button>
             :
             <div className='mt-2 p-1 md:p-2 flex items-center justify-between bg-gray-100 rounded transition-all'>
               <button onClick={() => decrease(product.id)} className='bg-[#D23232] rounded-sm'><Minus color="#fff" /></button>
