@@ -20,7 +20,7 @@ function Filter() {
   }
 
   return (
-    <div className='my-4'>
+    <div className='my-4 overflow-x-scroll'>
       <div className='container mx-auto px-4'>
         <div className='flex gap-3 mb-2'>
           <button className='px-4 py-1.5 text-white text-base border-[1px] border-solid border-[#FC014A] bg-[#FC014A] leading-[120%] rounded hover:bg-[#fc0148da] transition-all'>Все</button>

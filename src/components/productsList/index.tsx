@@ -36,7 +36,7 @@ export const ProductsList: React.FC = () => {
           <h2 className="text-2xl font-semibold mb-6">
             All Products: <span className="font-normal">{products?.length || 0}</span>
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
             {products?.map((product, i) => (
               <ProductCard key={i} product={product}  />
             ))}

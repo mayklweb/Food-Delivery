@@ -52,7 +52,7 @@ export const ProductCard: React.FC<{ product: ProductsType }> = ({ product }) =>
   }
 
   return (
-    <div className="p-4 w-[100%] h-full flex flex-col rounded-lg overflow-hidden bg-white shadow-md hover:shadow-lg transition-all">
+    <div className="p-2 md:p-4 w-[100%] h-full flex flex-col rounded-lg overflow-hidden bg-white shadow-md hover:shadow-lg transition-all">
       <div className="">
         <img
           alt="Les Ailes chicken wings"
@@ -67,15 +67,15 @@ export const ProductCard: React.FC<{ product: ProductsType }> = ({ product }) =>
         />
       </div>
       <div className="mt-4 flex flex-col justify-between flex-auto">
-        <h3 className="text-lg text-pretty font-medium">{product.name}</h3>
-        <p className="h-full text-xl font-bold text-[#FC014A] flex-auto">
+        <h3 className="text-sm md:text-lg text-pretty font-medium">{product.name}</h3>
+        <p className="h-full text-base md:text-xl font-bold text-[#FC014A] flex-auto">
           {product.price} <span className="text-lg">сум</span>
         </p>
         {
 
-          !foundedItem ? <button onClick={() => addCart(product)} className='w-full mt-2 py-[6px] rounded text-lg text-white bg-[#FC014A] hover:bg-[#fc0148da] transition-all'>Add to cart</button>
+          !foundedItem ? <button onClick={() => addCart(product)} className='w-full mt-2 p-1 md:py-[6px] rounded text-base text-white bg-[#FC014A] hover:bg-[#fc0148da] transition-all'>Add to cart</button>
             :
-            <div className='mt-2 p-2 flex items-center justify-between bg-gray-100 rounded transition-all'>
+            <div className='mt-2 p-1 md:p-2 flex items-center justify-between bg-gray-100 rounded transition-all'>
               <button onClick={() => decrease(product.id)} className='bg-[#D23232] rounded-sm'><Minus color="#fff" /></button>
               <p>{foundedItem.qty}</p>
               <button onClick={() => inc(product.id)} className='bg-[#29CC29] rounded-sm'><Plus color="#fff" /></button>
